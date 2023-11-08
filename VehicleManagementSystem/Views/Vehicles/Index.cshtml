@@ -1,0 +1,44 @@
+﻿@model IEnumerable<VehicleManagementSystem.Models.Vehicle>
+
+@{
+    ViewData["Title"] = "Vehicle List";
+}
+
+<h2 class="mb-4 text-center">Vehicle List</h2>
+
+<div class="text-left mb-3">
+    <a href="@Url.Action("Create", "Vehicles")" class="btn btn-primary">Add Vehicle</a>
+</div>
+
+<div class="row justify-content-center mb-3">
+    <div class="col-md-6">
+        <form asp-action="Index" method="get" class="input-group">
+            <input type="text" name="searchModel" class="form-control" placeholder="Find by model">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>Reg No</th>
+                <th>Model Name</th>
+                <th>Number of Seats</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var vehicle in Model)
+            {
+                <tr>
+                    <td>@vehicle.RegNo</td>
+                    <td>@vehicle.Model</td>
+                    <td>@vehicle.NumberOfSeats</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
